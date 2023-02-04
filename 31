@@ -1,0 +1,55 @@
+bird(eagle).
+bird(penguin).
+can_fly(penguin):-!,fail.
+can_fly(X):-bird(X).
+maried(a, b).
+maried(c, d).
+lovers(a, d).
+likes(X, Y):-maried(X, Y).
+
+likes(X, Y) :- lovers(X, Y).
+likes(X, Y) :- maried(X, Y), lovers(X, _),!,fail.
+likes(X, Y) :- maried(X, Y).
+likes(A, B).
+?- can_fly(Bird).
+false.
+bird(eagle).
+bird(penguin).
+bird(ostrich).
+bird(dodo).
+bird(sparrow).
+bird(pigeon).
+
+flightless_bird(penguin).
+flightless_bird(ostrich).
+flightless_bird(dodo).
+
+bird_of_pray(eagle).
+
+extinct(dodo).
+extinct(wooly_mammoth).
+
+can_fly(Bird) :-
+    bird(Bird),
+    \+ flightless_bird(Bird).
+
+extinct_bird(Bird) :-
+    bird(Bird),
+    extinct(Bird).
+    bird(eagle).
+bird(penguin).
+
+flightless(penguin).
+
+can_fly(X) :- bird(X), \+ flightless(X).
+
+
+married(bill,   hillary).
+married(barack, michelle).
+
+lovers(bill, michelle).
+
+cheating(Cheater, SpitedSpouse, Lover) :-
+  married(Cheater, SpitedSpouse),
+  lovers(Cheater, Lover),
+  SpitedSpouse \= Lover.
